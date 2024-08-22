@@ -1,4 +1,4 @@
-#!/bin/sh
+!/bin/sh
 
 # Define color codes
 COLOR_RESET="\033[0m"
@@ -26,8 +26,10 @@ delete_files() {
         if [ -f "$DIR/$FILE" ]; then
             echo -e "${COLOR_YELLOW}Deleting old firmware: $FILE...${COLOR_RESET}"
             rm "$DIR/$FILE"
-            echo -e "${COLOR_GREEN}Deleted $FILE.${COLOR_RESET}"
+            echo -e "${COLOR_GREEN}Successfully deleted $FILE.${COLOR_RESET}"
             pause
+        else
+            echo -e "${COLOR_RED}File not found: $FILE.${COLOR_RESET}"
         fi
     done
 }

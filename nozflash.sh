@@ -14,11 +14,12 @@ pause() {
 
 # Function to delete files in a range
 delete_files() {
-    for i in $(seq -f "%03g" $START $STEP $END); do
-        FILE="noz0_120_G30-noz0_${i}_000.bin"
-        if [ -f "$1/$FILE" ]; then
+    local DIR=$1
+    for i in $(seq $START $STEP $END); do
+        FILE=$(printf "noz0_120_G30-noz0_%03d_000.bin" $i)
+        if [ -f "$DIR/$FILE" ]; then
             echo "Deleting old firmware: $FILE..."
-            rm "$1/$FILE"
+            rm "$DIR/$FILE"
             pause
         fi
     done

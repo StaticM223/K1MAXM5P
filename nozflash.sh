@@ -3,7 +3,7 @@
 # Define file names and URL
 FILE1="noz0_120_G30-noz0_003_000.bin"
 FILE2="noz0_120_G30-noz0_005_000.bin"  # Alternative file to try if FILE1 is not found
-URL="https://raw.githubusercontent.com/StaticM223/K1MAXM5P/main/noz0_120_G30-noz0_014_000.bin "
+URL="https://raw.githubusercontent.com/StaticM223/K1MAXM5P/main/noz0_120_G30-noz0_014_000.bin"
 
 echo "Checking directory and downloading files..."
 
@@ -18,8 +18,8 @@ if [ -d /usr/share/klipper ]; then
         rm /usr/share/klipper/fw/K1/$FILE2
     fi
     echo "Downloading new file..."
-    curl -L -o /usr/share/klipper/fw/K1/noz0_120_G30-noz0_014_000.bin $URL || {
-        echo "curl failed with error code $?."
+    wget --no-check-certificate -P /usr/share/klipper/fw/K1/ $URL || {
+        echo "wget failed with error code $?."
         exit 1
     }
 
@@ -34,8 +34,8 @@ elif [ -d /usr/data/klipper ]; then
         rm /usr/data/klipper/fw/K1/$FILE2
     fi
     echo "Downloading new file..."
-    curl -L -o /usr/data/klipper/fw/K1/noz0_120_G30-noz0_014_000.bin $URL || {
-        echo "curl failed with error code $?."
+    wget --no-check-certificate -P /usr/data/klipper/fw/K1/ $URL || {
+        echo "wget failed with error code $?."
         exit 1
     }
 

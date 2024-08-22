@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Define file names and URL
-FILE1="noz0_120_G30-noz0_003_000.bin"
-FILE2="noz0_120_G30-noz0_005_000.bin"  # Alternative file to try if FILE1 is not found
+FILE1="noz0_120_G30-noz0_007_000.bin"
+FILE2="noz0_120_G30-noz0_009_000.bin"  # Alternative file to try if FILE1 is not found
 URL="https://raw.githubusercontent.com/StaticM223/K1MAXM5P/main/noz0_120_G30-noz0_014_000.bin"
 
 echo "Checking directory and downloading files..."

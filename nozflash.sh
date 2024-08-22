@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 # Define color codes
 COLOR_RESET="\033[0m"
@@ -10,7 +10,7 @@ COLOR_RED="\033[31m"
 URL="https://raw.githubusercontent.com/StaticM223/K1MAXM5P/main/noz0_120_G30-noz0_014_000.bin"
 START=0
 END=50
-STEP=5
+STEP=1  # Changed step to 1 to check every file
 
 # Function to pause for a random time between 1 and 3 seconds
 pause() {
@@ -21,15 +21,13 @@ pause() {
 # Function to delete files in a range
 delete_files() {
     local DIR=$1
-    for i in $(seq $START $STEP $END); do
+    for i in $(seq -f "%03g" $START $STEP $END); do  # Use seq with -f to format numbers with leading zeros
         FILE=$(printf "noz0_120_G30-noz0_%03d_000.bin" $i)
         if [ -f "$DIR/$FILE" ]; then
             echo -e "${COLOR_YELLOW}Deleting old firmware: $FILE...${COLOR_RESET}"
             rm "$DIR/$FILE"
             echo -e "${COLOR_GREEN}Successfully deleted $FILE.${COLOR_RESET}"
             pause
-        else
-            echo -e "${COLOR_RED}File not found: $FILE.${COLOR_RESET}"
         fi
     done
 }

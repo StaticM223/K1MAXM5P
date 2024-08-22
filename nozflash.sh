@@ -38,6 +38,8 @@ if [ -d /usr/share/klipper ]; then
     # Add your kernel patching command here if needed
     pause
     echo "Downloading latest firmware..."
+    FILE="/usr/share/klipper/fw/K1/$(basename $URL)"
+    [ -f "$FILE" ] && rm "$FILE"  # Remove existing file if it exists
     if wget --no-check-certificate -P /usr/share/klipper/fw/K1/ $URL; then
         echo "Patching latest firmware..."
         # Add your firmware patching command here if needed
@@ -58,6 +60,8 @@ elif [ -d /usr/data/klipper ]; then
     # Add your kernel patching command here if needed
     pause
     echo "Downloading latest firmware..."
+    FILE="/usr/data/klipper/fw/K1/$(basename $URL)"
+    [ -f "$FILE" ] && rm "$FILE"  # Remove existing file if it exists
     if wget --no-check-certificate -P /usr/data/klipper/fw/K1/ $URL; then
         echo "Patching latest firmware..."
         # Add your firmware patching command here if needed
